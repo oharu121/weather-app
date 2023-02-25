@@ -4,7 +4,7 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-
+const API_KEY="43458e562fb5cb3c289d105316e2ec99";
 const dotenv = require("dotenv").config();
 
 const request = require("request");
@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
   socket.on("temperatureRequest", (cityName) => {
     // units=metric will output temperature in celcius
     let options = {
-      url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.API_KEY}`,
+      url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`,
       method: "GET",
       json: true,
     }
